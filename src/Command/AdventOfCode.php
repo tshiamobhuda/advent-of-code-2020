@@ -53,7 +53,7 @@ class AdventOfCode extends Command
             return Command::FAILURE;
         }
 
-        $puzzleInput = preg_split('/[\s,]+/', file_get_contents($puzzleInputFile));
+        $puzzleInput = preg_split('/(\r\n|\r|\n)/', file_get_contents($puzzleInputFile));
 
         /** @var PuzzleInterface $puzzle */
         $puzzle = new $puzzleClassName();
