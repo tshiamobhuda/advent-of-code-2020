@@ -1,8 +1,6 @@
 Advent of Code 2020
 ----
-This repo houses my solutions of [advent of Code 2020](https://adventofcode.com/2020) puzzle.
-
-This project uses the `Symfony\Console` component
+This repo houses my solutions for the [advent of Code 2020](https://adventofcode.com/2020) puzzles.
 
 ### Requirements:
 - composer
@@ -19,3 +17,6 @@ This project uses the `Symfony\Console` component
     - `$ bin/aoc 1 b` will run day 1 part b
 4. You can also use example input by passing the `-t` option to the command i.e
     - `$ bin/aoc 1 -t` will run day 1 part a with example input stored at `src/Resources/test/day1.txt`
+
+#### Mentions
+ - This project uses the `Symfony\Console` component
