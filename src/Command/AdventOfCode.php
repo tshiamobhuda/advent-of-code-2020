@@ -8,6 +8,7 @@ use Aoc\Puzzle\PuzzleInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -18,7 +19,8 @@ class AdventOfCode extends Command
         $this->setName('aoc')
             ->setDescription('Advent of Code 2020')
             ->addArgument('day', InputArgument::REQUIRED, 'which day of the AOC puzzle')
-            ->addArgument('part', InputArgument::OPTIONAL, 'which part of the AOC puzzle', 'a');
+            ->addArgument('part', InputArgument::OPTIONAL, 'which part of the AOC puzzle', 'a')
+            ->addOption('test', 't', InputOption::VALUE_NONE, 'Use example input');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -27,8 +29,10 @@ class AdventOfCode extends Command
 
         $dayValue = $input->getArgument('day');
         $partValue = $input->getArgument('part');
+        $useTestData = $input->getOption('test');
 
-        $puzzleInputFile = __DIR__ . "/../Resources/day$dayValue.txt";
+        $puzzleInputFile = __DIR__;
+        $puzzleInputFile .= ($useTestData) ?  "/../Resources/test/day$dayValue.txt" : "/../Resources/day$dayValue.txt";
         $puzzleClassName = "\Aoc\Puzzle\Day$dayValue";
 
         if (!file_exists($puzzleInputFile)) {
@@ -49,7 +53,7 @@ class AdventOfCode extends Command
             return Command::FAILURE;
         }
 
-        $puzzleInput = preg_split('/[\s,]+/', file_get_contents(__DIR__ . "/../Resources/day$dayValue.txt"));
+        $puzzleInput = preg_split('/[\s,]+/', file_get_contents($puzzleInputFile));
 
         /** @var PuzzleInterface $puzzle */
         $puzzle = new $puzzleClassName();
