@@ -1,0 +1,9 @@
+{
+    "name": "tshiamobhuda/advent-of-code-2020",
+    "description": "Advent of Code 2020 puzzle solutions",
+    "type": "project",
+    "require": {
+        "symfony/console": "^5.2"
+    },
+    "license": "MIT"
+}
