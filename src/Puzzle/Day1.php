@@ -10,10 +10,10 @@ class Day1 implements PuzzleInterface
     {
         $arr_length = count($data);
 
-        for($k = 0; $k < $arr_length; $k++) {
-            for($j = 0; $j < $arr_length; $j++) {
-                if (2020 === ($data[$k] + $data[$j])) {
-                    return $data[$k] * $data[$j] . '';
+        for($j = 0; $j < $arr_length; $j++) {
+            for($k = 0; $k < $arr_length; $k++) {
+                if (2020 === ($data[$j] + $data[$k])) {
+                    return $data[$j] * $data[$k] . '';
                 }
             }
         }
@@ -23,6 +23,18 @@ class Day1 implements PuzzleInterface
 
     public function partB(array $data): ?string
     {
+        $arr_length = count($data);
+
+        for($j = 0; $j < $arr_length; $j++) {
+            for($k = 0; $k < $arr_length; $k++) {
+                for($l = 0; $l < $arr_length; $l++) {
+                    if (2020 === ($data[$j] + $data[$k] + $data[$l])) {
+                        return $data[$j] * $data[$k] * $data[$l] . '';
+                    }
+                }
+            }
+        }
+
         return null;
     }
 }
