@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+use Aoc\Command\AdventOfCode;
+use Symfony\Component\Console\Application;
+
+if (!in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
+    echo 'Warning: The console should be invoked via the CLI version of PHP, not the '.PHP_SAPI.' SAPI'.PHP_EOL;
+}
+
+set_time_limit(0);
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+if (!class_exists(Application::class)) {
+    throw new LogicException('It seems you have missing Classes. Perhaps try to do a composer install');
+}
+
+$application = new Application('AOC-2020');
+
+$command = new AdventOfCode();
+$application->add($command);
+$application->setDefaultCommand($command->getName(), true);
+
+$application->run();
