@@ -10,5 +10,8 @@
     "require": {
         "symfony/console": "^5.2"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16"
+    }
 }
